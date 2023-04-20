@@ -9,7 +9,13 @@ from numpy import asarray
 from sklearn.model_selection import train_test_split
 
 
-app = Flask(__name__)
+# app = Flask(__name__)
+def create_app():
+    app = Flask(__name__)
+    # add configuration, blueprints, etc. to app
+    return app
+
+app = create_app()  # create the Flask app object
 
 
 
@@ -51,5 +57,5 @@ def predict():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', debug=True)
-    # serve(app, host='0.0.0.0', port=8080, threads=4)
+#     app.run(host='0.0.0.0', debug=True)
+    serve(app, host='0.0.0.0', port=8080, threads=4)
