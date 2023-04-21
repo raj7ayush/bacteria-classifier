@@ -26,6 +26,11 @@ def home():
 @app.route('/',methods = ['POST'])
 def predict():
     imagefile = request.files['imagefile']
+    
+    if not imagefile.filename.lower().endswith('.bmp'):
+        message="Invalid file format. Please upload a .bmp image."
+        return render_template('index.html',prediction=message )
+    
     image_path = "./images/" + imagefile.filename
     imagefile.save(image_path)
 
